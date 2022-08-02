@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- Include the ECharts file you just downloaded -->
+   
+    <script src="dist/echarts.js"></script>
+  </head>
+  <body>
+    <!-- Prepare a DOM with a defined width and height for ECharts -->
+    <div id="main" style="width: 1600px;height:400px;"></div>
+    <script type="text/javascript">
+        var chart = echarts.init(document.getElementById('main'));
+
+        function indexDemo(result) {
+            option = {
+                xAxis: [
+                    {
+                    type: 'category',
+                    data: result.investor.slice(0,10)
+                    }
+                        ],
+                yAxis: [
+                    {
+                    type: 'value'
+                    }
+                        ],
+                series: [
+                    {type: 'bar',
+                    data: result.counting.slice(0,10),
+                    showBackground: true,
+                    backgroundStyle: {
+                    color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                    }
+                ]
+                };
+        chart.setOption(option);
+
+
+        };
+   </script>
+ 
+ <script type="text/javascript" src="AM.json?callback=indexDemo"></script>
+  </body>
+</html>
+
+
